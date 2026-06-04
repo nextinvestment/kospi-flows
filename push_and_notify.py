@@ -98,16 +98,26 @@ def build_summary() -> str:
         day = s[s["date"] == d_latest].copy()
         if not day.empty:
             day["foreign_value"] = day["foreign_net"] * day["close"] / 1e8  # 억원
-            from config import WATCHLIST
-            day["name"] = day["code"].map(WATCHLIST)
-            top = day.nlargest(3, "foreign_value")[["name", "foreign_value"]]
-            bot = day.nsmallest(3, "foreign_value")[["name", "foreign_value"]]
+            # Prefer universe.csv (full top-200) over WATCHLIST so TOP15 means something
+            uni_path = HERE / "data" / "kospi_universe.csv"
+            if uni_path.exists():
+                uni = pd.read_csv(uni_path, dtype={"code": str})
+                name_map = dict(zip(uni["code"], uni["name"]))
+            else:
+                from config import WATCHLIST
+                name_map = WATCHLIST
+            day["name"] = day["code"].map(name_map).fillna(day["code"])
+            top = day.nlargest(15, "foreign_value")[["name", "foreign_value", "ret_pct"]]
+            bot = day.nsmallest(15, "foreign_value")[["name", "foreign_value", "ret_pct"]]
             lines += [
                 "",
-                f"<b>외국인 순매수 TOP3</b>",
-                *[f"  {n}: {v:+,.0f}억" for n, v in zip(top["name"], top["foreign_value"])],
-                f"<b>외국인 순매도 TOP3</b>",
-                *[f"  {n}: {v:+,.0f}억" for n, v in zip(bot["name"], bot["foreign_value"])],
+                f"<b>외국인 순매수 TOP 15 (억원)</b>",
+                *[f"  {i:>2}. {n} {v:+,.0f}  ({r:+.1f}%)"
+                  for i, (n, v, r) in enumerate(zip(top["name"], top["foreign_value"], top["ret_pct"]), 1)],
+                "",
+                f"<b>외국인 순매도 TOP 15 (억원)</b>",
+                *[f"  {i:>2}. {n} {v:+,.0f}  ({r:+.1f}%)"
+                  for i, (n, v, r) in enumerate(zip(bot["name"], bot["foreign_value"], bot["ret_pct"]), 1)],
             ]
 
     url = os.environ.get("STREAMLIT_URL", "").strip()

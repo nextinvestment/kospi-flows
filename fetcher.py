@@ -179,6 +179,39 @@ def fetch_stock(code: str, pages: int = 5) -> pd.DataFrame:
     return out
 
 
+def fetch_kospi_universe(top_n: int = 200) -> list[tuple[str, str]]:
+    """KOSPI market-cap top N codes from Naver. Returns [(code, name), ...].
+
+    Naver sise_market_sum has 50 stocks/page; we hit ceil(top_n/50) pages.
+    """
+    import math
+    pages = math.ceil(top_n / 50)
+    seen: dict[str, str] = {}
+    for page in range(1, pages + 1):
+        url = f"{BASE}/sise/sise_market_sum.naver?sosok=0&page={page}"
+        html = _get(url)
+        soup = BeautifulSoup(html, "html.parser")
+        tab = soup.find("table", class_="type_2")
+        if tab is None:
+            break
+        for a in tab.find_all("a", href=True):
+            if "code=" not in a["href"]:
+                continue
+            code = a["href"].split("code=")[-1]
+            if not (code.isdigit() and len(code) == 6):
+                continue
+            name = a.get_text(strip=True)
+            if not name:
+                continue
+            seen.setdefault(code, name)
+            if len(seen) >= top_n:
+                break
+        if len(seen) >= top_n:
+            break
+        time.sleep(0.15)
+    return list(seen.items())[:top_n]
+
+
 def fetch_stocks_parallel(codes: list[str], pages: int = 5, max_workers: int = 8) -> pd.DataFrame:
     """Fan-out per-stock fetches, concat results."""
     frames = []

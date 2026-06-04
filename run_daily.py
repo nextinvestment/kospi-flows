@@ -12,7 +12,30 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 import fetcher
 import store
+from pathlib import Path
+import pandas as pd
 from config import WATCHLIST
+
+HERE = Path(__file__).parent
+UNIVERSE_CSV = HERE / "data" / "kospi_universe.csv"
+UNIVERSE_REFRESH_DAYS = 7  # re-fetch market-cap ranking weekly
+
+
+def get_codes() -> list[str]:
+    """Universe.csv (top-200) if fresh, else refresh; fallback = WATCHLIST."""
+    import time as _t
+    if UNIVERSE_CSV.exists():
+        age_days = (_t.time() - UNIVERSE_CSV.stat().st_mtime) / 86400
+        if age_days < UNIVERSE_REFRESH_DAYS:
+            df = pd.read_csv(UNIVERSE_CSV, dtype={"code": str})
+            return df["code"].tolist()
+    try:
+        pairs = fetcher.fetch_kospi_universe(top_n=200)
+        pd.DataFrame(pairs, columns=["code", "name"]).to_csv(UNIVERSE_CSV, index=False, encoding="utf-8")
+        return [c for c, _ in pairs]
+    except Exception as e:
+        print(f"  ! universe refresh failed, falling back to WATCHLIST: {e}")
+        return list(WATCHLIST.keys())
 
 
 def ingest_market(market: str = "KOSPI", pages: int = 2) -> int:
@@ -29,9 +52,9 @@ def ingest_market(market: str = "KOSPI", pages: int = 2) -> int:
 
 
 def ingest_stocks(pages: int = 2) -> int:
-    codes = list(WATCHLIST.keys())
+    codes = get_codes()
     print(f"[stocks] fetching {len(codes)} tickers × {pages} pages...")
-    df = fetcher.fetch_stocks_parallel(codes, pages=pages, max_workers=6)
+    df = fetcher.fetch_stocks_parallel(codes, pages=pages, max_workers=8)
     if df.empty:
         print("[stocks] no data returned")
         return 0
