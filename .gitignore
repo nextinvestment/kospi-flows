@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+data/*.log
+data/streamlit_test.log
+*.tmp
+.DS_Store
+.vscode/
+.idea/
