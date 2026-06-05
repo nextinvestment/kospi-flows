@@ -14,10 +14,13 @@ KOSPI 투자자별 수급 분석 — 외국인·기관·개인 일별/월별 누
 ## Files
 
 - `config.py` — `WATCHLIST` (코드→종목명 dict), `INVESTOR_COLS` (10개 투자주체), `KOSPI200_PROXY_CODE = "069500"`
-- `fetcher.py` — Naver 스크래퍼. `fetch_market_page(market, page)`, `fetch_stock_page(code, page)`, 페이지 합치는 `fetch_market` / `fetch_stock`, 병렬 종목 `fetch_stocks_parallel`
-- `store.py` — Parquet 저장 (`market_flows.parquet`, `stock_flows.parquet`). 날짜+코드 upsert 중복제거
-- `run_daily.py` — daily / backfill 모드
-- `app.py` — Streamlit 대시보드
+- `fetcher.py` — Naver 스크래퍼. `fetch_market_page`, `fetch_stock_page`, `fetch_index_page` (KOSPI 지수), `fetch_kospi_universe` (시총 상위 N개), 병렬 종목 `fetch_stocks_parallel`
+- `store.py` — Parquet 저장 (`market_flows.parquet`, `stock_flows.parquet`, `kospi_index.parquet`). 날짜+코드 upsert 중복제거
+- `analytics.py` — `n_day_cumulative_top` (5d/20d 누적 TOP), `consecutive_streak` (N일 연속 매수/매도), `co_buying_selling` (외국인+기관 동반), `divergence_check` (KOSPI 지수 vs 외국인 누적)
+- `run_daily.py` — daily / backfill 모드. universe.csv가 7일 넘으면 자동 갱신, top-200 종목 매일 fetch
+- `top_foreign.py` — CLI: `python top_foreign.py [date] [N] [universe_size]`로 TOP-N 출력
+- `push_and_notify.py` — git push + Telegram 알림 2개 (분할: 시장요약+당일 TOP15 / 누적·동반·연속)
+- `app.py` — Streamlit 8탭 대시보드
 
 ## Data sources & units
 

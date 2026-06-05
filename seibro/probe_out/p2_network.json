@@ -1,0 +1,70 @@
+[
+  {
+    "phase": "REQ",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "method": "POST",
+    "post": "<reqParam action=\"getButtonAuth\" task=\"ksd.safe.bip.cmuc.User.process.ButtonMgrPTask\"><MENU_NO value=\"921\"/><CMM_BTN_ABBR_NM value=\"total_search,openall,print,hwp,word,pdf,seach,\"/><W2XPATH value=\"/IPORTAL/user/ovsSec/BIP_CNTS10013V.xml\"/></reqParam>",
+    "headers": {
+      "submissionid": "submissionButton",
+      "content-type": "application/xml; charset=\"UTF-8\""
+    }
+  },
+  {
+    "phase": "REQ",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "method": "POST",
+    "post": "<reqParam action=\"locationInfoList\" task=\"ksd.safe.bip.mgmt.taskmgr.process.CommonPTask\"><MENU_NO value=\"921\"/><CMM_BTN_ABBR_NM value=\"total_search,openall,print,hwp,word,pdf,seach,\"/><W2XPATH value=\"/IPORTAL/user/ovsSec/BIP_CNTS10013V.xml\"/></reqParam>",
+    "headers": {
+      "submissionid": "submission_locationInfoList",
+      "content-type": "application/xml; charset=\"UTF-8\""
+    }
+  },
+  {
+    "phase": "REQ",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "method": "POST",
+    "post": "<reqParam action=\"getUserID\" task=\"ksd.safe.bip.cmuc.User.process.InstEventPTask\"><MENU_NO value=\"921\"/><CMM_BTN_ABBR_NM value=\"total_search,openall,print,hwp,word,pdf,seach,\"/><W2XPATH value=\"/IPORTAL/user/ovsSec/BIP_CNTS10013V.xml\"/></reqParam>",
+    "headers": {
+      "submissionid": "submission_getLoginUserID",
+      "content-type": "application/xml; charset=\"UTF-8\""
+    }
+  },
+  {
+    "phase": "REQ",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "method": "POST",
+    "post": "<reqParam action=\"menuAllList\" task=\"ksd.safe.bip.mgmt.taskmgr.process.CommonPTask\"><MENU_NO value=\"921\"/><CMM_BTN_ABBR_NM value=\"total_search,openall,print,hwp,word,pdf,seach,\"/><W2XPATH value=\"/IPORTAL/user/ovsSec/BIP_CNTS10013V.xml\"/></reqParam>",
+    "headers": {
+      "submissionid": "submission_menuAllList",
+      "content-type": "application/xml; charset=\"UTF-8\""
+    }
+  },
+  {
+    "phase": "RES",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_chars": 208,
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<RES beforeServletCall=\"1780631514457\" beforeEJBCall=\"1780631514484\" afterServletCall=\"1780631514484\" afterEJBCall=\"1780631514484\">\n    <userID value=\"null\"/>\n</RES>\n"
+  },
+  {
+    "phase": "RES",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_chars": 199,
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<vector beforeServletCall=\"1780631514905\" beforeEJBCall=\"1780631514911\" afterServletCall=\"1780631514935\" afterEJBCall=\"1780631514935\" result=\"0\">\n</vector>\n\n"
+  },
+  {
+    "phase": "RES",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_chars": 1745,
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<vector beforeServletCall=\"1780631514927\" beforeEJBCall=\"1780631514928\" afterServletCall=\"1780631514932\" afterEJBCall=\"1780631514932\" result=\"4\">\n    <data vectorkey=\"0\" type=\"Document\">\n        <result><MENU_NO value=\"2\"/><HIGHER_MENU_NO value=\"1\"/><TOP_MENNU_NO value=\"0\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU_YN value=\"N\"/><REP_PRGM_NO value=\"2\"/><PRGM_CALLOUT_PATH value=\"/BIP_CMUC01038V.xml\"/><MENU_NM value=\"홈\"/><TITLE_NM value=\"\"/><MENU_LEVEL value=\"0\"/><SORTN_NO value=\"1\"/></result>\n    </data>\n    <data vectorkey=\"1\" type=\"Document\">\n        <result><MENU_NO value=\"244\"/><HIGHER_MENU_NO value=\"1\"/><TOP_MENNU_NO value=\"0\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU_YN value=\"Y\"/><REP_PRGM_NO value=\"482\"/><PRGM_CALLOUT_PATH value=\"/user/ovsSec/BIP_CNTS10001V.xml&amp;menuNo=246\"/><MENU_NM value=\"국제거래\"/><TITLE_NM value=\"국제거래\"/><MENU_LEVEL value=\"1\"/><SORTN_NO value=\"11\"/></result>\n    </data>\n    <data vectorkey=\"2\" type=\"Document\">\n        <result><MENU_NO value=\"669\"/><HIGHER_MENU_NO value=\"244\"/><TOP_MENNU_NO value=\"0\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU_YN value=\"Y\"/><REP_PRGM_NO value=\"669\"/><PRGM_CALLOUT_PATH value=\"/user/ann/BIP_CNST02001V.xml\"/><MENU_NM value=\"외화증권예탁결제\"/><TITLE_NM value=\"외화증권예탁결제\"/><MENU_LEVEL value=\"2\"/><SORTN_NO value=\"4\"/></result>\n    </data>\n    <data vectorkey=\"3\" type=\"Document\">\n        <result><MENU_NO value=\"921\"/><HIGHER_MENU_NO value=\"669\"/><TOP_MENNU_NO value=\"0\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU"
+  },
+  {
+    "phase": "RES",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_chars": 120257,
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<vector beforeServletCall=\"1780631514976\" beforeEJBCall=\"1780631514976\" afterServletCall=\"1780631515147\" afterEJBCall=\"1780631515146\" result=\"329\">\n    <data vectorkey=\"0\" type=\"Document\">\n        <result><MENU_NO value=\"3\"/><HIGHER_MENU_NO value=\"1\"/><TOP_MENNU_NO value=\"1\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU_YN value=\"Y\"/><REP_PRGM_NO value=\"386\"/><PRGM_CALLOUT_PATH value=\"/user/company/BIP_CNTS01001V.xml&amp;menuNo=4\"/><MENU_NM value=\"기업\"/><MENU_LEVEL value=\"1\"/><SORTN_NO value=\"1\"/></result>\n    </data>\n    <data vectorkey=\"1\" type=\"Document\">\n        <result><MENU_NO value=\"4\"/><HIGHER_MENU_NO value=\"3\"/><TOP_MENNU_NO value=\"1\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU_YN value=\"N\"/><REP_PRGM_NO value=\"4\"/><PRGM_CALLOUT_PATH value=\"/user/company/BIP_CNTS01001V.xml\"/><MENU_NM value=\"기업기본정보\"/><MENU_LEVEL value=\"2\"/><SORTN_NO value=\"1\"/></result>\n    </data>\n    <data vectorkey=\"2\" type=\"Document\">\n        <result><MENU_NO value=\"5\"/><HIGHER_MENU_NO value=\"3\"/><TOP_MENNU_NO value=\"1\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU_YN value=\"N\"/><REP_PRGM_NO value=\"5\"/><PRGM_CALLOUT_PATH value=\"/user/company/BIP_CNTS01002V.xml\"/><MENU_NM value=\"발행인별발행정보\"/><MENU_LEVEL value=\"2\"/><SORTN_NO value=\"2\"/></result>\n    </data>\n    <data vectorkey=\"3\" type=\"Document\">\n        <result><MENU_NO value=\"6\"/><HIGHER_MENU_NO value=\"3\"/><TOP_MENNU_NO value=\"1\"/><PTL_MENU_SORT_TPCD value=\"Y\"/><MENU_YN value=\"Y\"/><REP_PRGM_NO value=\"8\"/><PRGM_CALLOUT_PATH value="
+  }
+]

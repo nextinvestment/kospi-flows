@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<vector beforeServletCall="1780632308207" beforeEJBCall="1780632308211" afterServletCall="1780632314771" afterEJBCall="1780632314770" result="50">
+    <data vectorkey="0" type="Document">
+        <result><RNUM value="1"/><NATION_NM value="미국"/><ISIN value="US25459W4583"/><KOR_SECN_NM value="DIREXION DAILY SEMICONDUCTORS BULL 3X SHS ETF"/><SUM_FRSEC_BUY_AMT value="3391594156"/><SUM_FRSEC_SELL_AMT value="4247893713"/><SUM_FRSEC_TOT_AMT value="7639487869"/><SUM_FRSEC_NET_BUY_AMT value="-856299557"/></result>
+    </data>
+    <data vectorkey="1" type="Document">
+        <result><RNUM value="2"/><NATION_NM value="미국"/><ISIN value="US5951121038"/><KOR_SECN_NM value="MICRON TECHNOLOGY INC"/><SUM_FRSEC_BUY_AMT value="1179690310"/><SUM_FRSEC_SELL_AMT value="594251698"/><SUM_FRSEC_TOT_AMT value="1773942008"/><SUM_FRSEC_NET_BUY_AMT value="585438612"/></result>
+    </data>
+    <data vectorkey="2" type="Document">
+        <result><RNUM value="3"/><NATION_NM value="미국"/><ISIN value="US4581401001"/><KOR_SECN_NM value="INTEL CORP"/><SUM_FRSEC_BUY_AMT value="896046215"/><SUM_FRSEC_SELL_AMT value="399526754"/><SUM_FRSEC_TOT_AMT value="1295572969"/><SUM_FRSEC_NET_BUY_AMT value="496519461"/></result>
+    </data>
+    <data vectorkey="3" type="Document">
+        <result><RNUM value="4"/><NATION_NM value="미국"/><ISIN value="US67066G1040"/><KOR_SECN_NM value="NVIDIA CORP"/><SUM_FRSEC_BUY_AMT value="647792262"/><SUM_FRSEC_SELL_AMT value="842102944"/><SUM_FRSEC_TOT_AMT value="1489895206"/><SUM_FRSEC_NET_BUY_AMT value="-194310682"/></result>
+    </data>
+    <data vectorkey="4" type="Document">
+        <result><RNUM value="5"/><NATION_NM value="미국"/><ISIN value="US02079K3059"/><KOR_SECN_NM value="ALPHABET INC CL A"/><SUM_FRSEC_BUY_AMT value="618561371"/><SUM_FRSEC_SELL_AMT value="260370655"/><SUM_FRSEC_TOT_AMT value="878932026"/><SUM_FRSEC_NET_BUY_AMT value="358190716"/></result>
+    </data>
+    <data vectorkey="5" type="Document">
+        <result><RNUM value="6"/><NATION_NM value="미국"/><ISIN value="US80004C2008"/><KOR_SECN_NM value="SNDSK CRP ORD WI"/><SUM_FRSEC_BUY_AMT value="602185222"/><SUM_FRSEC_SELL_AMT value="703568325"/><SUM_FRSEC_TOT_AMT value="1305753546"/><SUM_FRSEC_NET_BUY_AMT value="-101383103"/></result>
+    </data>
+    <data vectorkey="6" type="Document">
+        <result><RNUM value="7"/><NATION_NM value="미국"/><ISIN value="US46152A6689"/><KOR_SECN_NM value="TRADR 2X LONG SNDK DAILY ETF"/><SUM_FRSEC_BUY_AMT value="491421247"/><SUM_FRSEC_SELL_AMT value="458886505"/><SUM_FRSEC_TOT_AMT value="950307752"/><SUM_FRSEC_NET_BUY_AMT value="32534741"/></result>
+    </data>
+    <data vectorkey="7" type="Document">
+        <result><RNUM value="8"/><NATION_NM value="미국"/><ISIN value="US77926X3200"/><KOR_SECN_NM value="ROUNDHILL MEMORY ETF"/><SUM_FRSEC_BUY_AMT value="473850758"/><SUM_FRSEC_SELL_AMT value="156698572"/><SUM_FRSEC_TOT_AMT value="630549330"/><SUM_FRSEC_NET_BUY_AMT value="317152186"/></result>
+    </data>
+    <data vectorkey="8" type="Document">
+        <result><RNUM value="9"/><NATION_NM value="미국"/><ISIN value="US25461A5285"/><KOR_SECN_NM value="DXN MU BUL2X ETF"/><SUM_FRSEC_BUY_AMT value="419870004"/><SUM_FRSEC_SELL_AMT value="291324853"/><SUM_FRSEC_TOT_AMT value="711194857"/><SUM_FRSEC_NET_BUY_AMT value="128545151"/></result>
+    </data>
+    <data vectorkey="9" type="Document">
+        <result><RNUM value="10"/><NATION_NM value="미국"/><ISIN value="US0079031078"/><KOR_SECN_NM value="ADVANCED MICRO DEVICES INC"/><SUM_FRSEC_BUY_AMT value="386295949"/><SUM_FRSEC_SELL_AMT value="305634503"/><SUM_FRSEC_TOT_AMT value="691930452"/><SUM_FRSEC_NET_BUY_AMT value="80661445"/></result>
+    </data>
+    <data vectorkey="10" type="Document">
+        <result><RNUM value="11"/><NATION_NM value="미국"/><ISIN value="US4642875235"/><KOR_SECN_NM value="ISHARES SEMICONDUCTOR ETF"/><SUM_FRSEC_BUY_AMT value="371611846"/><SUM_FRSEC_SELL_AMT value="189715929"/><SUM_FRSEC_TOT_AMT value="561327775"/><SUM_FRSEC_NET_BUY_AMT value="181895917"/></result>
+    </data>
+    <data vectorkey="11" type="Document">
+        <result><RNUM value="12"/><NATION_NM value="미국"/><ISIN value="US25461H5726"/><KOR_SECN_NM value="DIREXION SHARES ETF TRUST DAILY SEMICONDUCTOR BEAR 3X SHS (R"/><SUM_FRSEC_BUY_AMT value="348967663"/><SUM_FRSEC_SELL_AMT value="235056118"/><SUM_FRSEC_TOT_AMT value="584023780"/><SUM_FRSEC_NET_BUY_AMT value="113911545"/></result>
+    </data>
+    <data vectorkey="12" type="Document">
+        <result><RNUM value="13"/><NATION_NM value="미국"/><ISIN value="US7731211089"/><KOR_SECN_NM value="ROCKET LAB CORPORATION COM USD0.0001 MRGR 978814817 US7731221062"/><SUM_FRSEC_BUY_AMT value="340128869"/><SUM_FRSEC_SELL_AMT value="464955233"/><SUM_FRSEC_TOT_AMT value="805084102"/><SUM_FRSEC_NET_BUY_AMT value="-124826364"/></result>
+    </data>
+    <data vectorkey="13" type="Document">
+        <result><RNUM value="14"/><NATION_NM value="미국"/><ISIN value="US46138G6492"/><KOR_SECN_NM value="INVESCO NASDAQ 100 ETF"/><SUM_FRSEC_BUY_AMT value="312429664"/><SUM_FRSEC_SELL_AMT value="34117368"/><SUM_FRSEC_TOT_AMT value="346547033"/><SUM_FRSEC_NET_BUY_AMT value="278312296"/></result>
+    </data>
+    <data vectorkey="14" type="Document">
+        <result><RNUM value="15"/><NATION_NM value="미국"/><ISIN value="US5738741041"/><KOR_SECN_NM value="MARVELL TECHNOLOGY INC"/><SUM_FRSEC_BUY_AMT value="289957003"/><SUM_FRSEC_SELL_AMT value="63969124"/><SUM_FRSEC_TOT_AMT value="353926127"/><SUM_FRSEC_NET_BUY_AMT value="225987878"/></result>
+    </data>
+    <data vectorkey="15" type="Document">
+        <result><RNUM value="16"/><NATION_NM value="미국"/><ISIN value="US87975E7765"/><KOR_SECN_NM value="Tema Space Innovators ETF"/><SUM_FRSEC_BUY_AMT value="276610707"/><SUM_FRSEC_SELL_AMT value="9534702"/><SUM_FRSEC_TOT_AMT value="286145409"/><SUM_FRSEC_NET_BUY_AMT value="267076005"/></result>
+    </data>
+    <data vectorkey="16" type="Document">
+        <result><RNUM value="17"/><NATION_NM value="미국"/><ISIN value="US25461A3876"/><KOR_SECN_NM value="DIREXION SHARES ETF TRUST DAILY MSCI SOUTH KOREA BULL SPLR 970211833 US25459Y5208"/><SUM_FRSEC_BUY_AMT value="275523298"/><SUM_FRSEC_SELL_AMT value="445295082"/><SUM_FRSEC_TOT_AMT value="720818380"/><SUM_FRSEC_NET_BUY_AMT value="-169771783"/></result>
+    </data>
+    <data vectorkey="17" type="Document">
+        <result><RNUM value="18"/><NATION_NM value="미국"/><ISIN value="US1725731079"/><KOR_SECN_NM value="Circle Internet"/><SUM_FRSEC_BUY_AMT value="275489865"/><SUM_FRSEC_SELL_AMT value="152031508"/><SUM_FRSEC_TOT_AMT value="427521373"/><SUM_FRSEC_NET_BUY_AMT value="123458356"/></result>
+    </data>
+    <data vectorkey="18" type="Document">
+        <result><RNUM value="19"/><NATION_NM value="미국"/><ISIN value="NL0009805522"/><KOR_SECN_NM value="YANDEX NV CL A"/><SUM_FRSEC_BUY_AMT value="265393469"/><SUM_FRSEC_SELL_AMT value="82092071"/><SUM_FRSEC_TOT_AMT value="347485539"/><SUM_FRSEC_NET_BUY_AMT value="183301398"/></result>
+    </data>
+    <data vectorkey="19" type="Document">
+        <result><RNUM value="20"/><NATION_NM value="미국"/><ISIN value="US55024U1097"/><KOR_SECN_NM value="LUMENTUM HOLDINGS INC SOFF 39520207144 US46612J5074"/><SUM_FRSEC_BUY_AMT value="263222830"/><SUM_FRSEC_SELL_AMT value="231017674"/><SUM_FRSEC_TOT_AMT value="494240505"/><SUM_FRSEC_NET_BUY_AMT value="32205156"/></result>
+    </data>
+    <data vectorkey="20" type="Document">
+        <result><RNUM value="21"/><NATION_NM value="미국"/><ISIN value="US46436E7186"/><KOR_SECN_NM value="ISHARES 0-3 MONTH TREASURY BOND ETF"/><SUM_FRSEC_BUY_AMT value="261494584"/><SUM_FRSEC_SELL_AMT value="205728830"/><SUM_FRSEC_TOT_AMT value="467223414"/><SUM_FRSEC_NET_BUY_AMT value="55765754"/></result>
+    </data>
+    <data vectorkey="21" type="Document">
+        <result><RNUM value="22"/><NATION_NM value="미국"/><ISIN value="US74347X8314"/><KOR_SECN_NM value="PROSHARES ULTRAPRO QQQ ETF"/><SUM_FRSEC_BUY_AMT value="246401349"/><SUM_FRSEC_SELL_AMT value="661697647"/><SUM_FRSEC_TOT_AMT value="908098996"/><SUM_FRSEC_NET_BUY_AMT value="-415296298"/></result>
+    </data>
+    <data vectorkey="22" type="Document">
+        <result><RNUM value="23"/><NATION_NM value="미국"/><ISIN value="US88160R1014"/><KOR_SECN_NM value="TESLA INC"/><SUM_FRSEC_BUY_AMT value="241732129"/><SUM_FRSEC_SELL_AMT value="1240209200"/><SUM_FRSEC_TOT_AMT value="1481941329"/><SUM_FRSEC_NET_BUY_AMT value="-998477071"/></result>
+    </data>
+    <data vectorkey="23" type="Document">
+        <result><RNUM value="24"/><NATION_NM value="미국"/><ISIN value="US46090E1038"/><KOR_SECN_NM value="INVESCO QQQ TRUST SRS 1 ETF"/><SUM_FRSEC_BUY_AMT value="215211419"/><SUM_FRSEC_SELL_AMT value="76954094"/><SUM_FRSEC_TOT_AMT value="292165513"/><SUM_FRSEC_NET_BUY_AMT value="138257325"/></result>
+    </data>
+    <data vectorkey="24" type="Document">
+        <result><RNUM value="25"/><NATION_NM value="미국"/><ISIN value="US75776W1036"/><KOR_SECN_NM value="REDWIRE CORP EXOF 008516579 KYG382451170"/><SUM_FRSEC_BUY_AMT value="206437779"/><SUM_FRSEC_SELL_AMT value="196746794"/><SUM_FRSEC_TOT_AMT value="403184574"/><SUM_FRSEC_NET_BUY_AMT value="9690985"/></result>
+    </data>
+    <data vectorkey="25" type="Document">
+        <result><RNUM value="26"/><NATION_NM value="일본"/><ISIN value="JP3236330001"/><KOR_SECN_NM value="KIOXIA HOLDINGS"/><SUM_FRSEC_BUY_AMT value="203831708"/><SUM_FRSEC_SELL_AMT value="89927369"/><SUM_FRSEC_TOT_AMT value="293759076"/><SUM_FRSEC_NET_BUY_AMT value="113904339"/></result>
+    </data>
+    <data vectorkey="26" type="Document">
+        <result><RNUM value="27"/><NATION_NM value="미국"/><ISIN value="US38747R8271"/><KOR_SECN_NM value="GRANITESHARES 2.0X LONG NVDA DAILY ETF"/><SUM_FRSEC_BUY_AMT value="198503778"/><SUM_FRSEC_SELL_AMT value="148594318"/><SUM_FRSEC_TOT_AMT value="347098096"/><SUM_FRSEC_NET_BUY_AMT value="49909459"/></result>
+    </data>
+    <data vectorkey="27" type="Document">
+        <result><RNUM value="28"/><NATION_NM value="미국"/><ISIN value="US0420682058"/><KOR_SECN_NM value="ARM HOLDINGS PLC SPON ADS EACH REP 1 ORD SHS"/><SUM_FRSEC_BUY_AMT value="197651552"/><SUM_FRSEC_SELL_AMT value="79407656"/><SUM_FRSEC_TOT_AMT value="277059208"/><SUM_FRSEC_NET_BUY_AMT value="118243895"/></result>
+    </data>
+    <data vectorkey="28" type="Document">
+        <result><RNUM value="29"/><NATION_NM value="미국"/><ISIN value="US69608A1088"/><KOR_SECN_NM value="PALANTIR TECHNOLOGIES INC CL A"/><SUM_FRSEC_BUY_AMT value="172739821"/><SUM_FRSEC_SELL_AMT value="678690971"/><SUM_FRSEC_TOT_AMT value="851430792"/><SUM_FRSEC_NET_BUY_AMT value="-505951150"/></result>
+    </data>
+    <data vectorkey="29" type="Document">
+        <result><RNUM value="30"/><NATION_NM value="미국"/><ISIN value="US03823U1025"/><KOR_SECN_NM value="APPLIED OPTOELECTRONICS INC"/><SUM_FRSEC_BUY_AMT value="164678889"/><SUM_FRSEC_SELL_AMT value="89686679"/><SUM_FRSEC_TOT_AMT value="254365568"/><SUM_FRSEC_NET_BUY_AMT value="74992211"/></result>
+    </data>
+    <data vectorkey="30" type="Document">
+        <result><RNUM value="31"/><NATION_NM value="미국"/><ISIN value="US0937121079"/><KOR_SECN_NM value="BLOOM ENERGY CORP CL A"/><SUM_FRSEC_BUY_AMT value="163283462"/><SUM_FRSEC_SELL_AMT value="91655384"/><SUM_FRSEC_TOT_AMT value="254938846"/><SUM_FRSEC_NET_BUY_AMT value="71628078"/></result>
+    </data>
+    <data vectorkey="31" type="Document">
+        <result><RNUM value="32"/><NATION_NM value="미국"/><ISIN value="US8085247976"/><KOR_SECN_NM value="SCHWAB US DIVIDEND EQUITY ETF"/><SUM_FRSEC_BUY_AMT value="158800335"/><SUM_FRSEC_SELL_AMT value="66568014"/><SUM_FRSEC_TOT_AMT value="225368349"/><SUM_FRSEC_NET_BUY_AMT value="92232321"/></result>
+    </data>
+    <data vectorkey="32" type="Document">
+        <result><RNUM value="33"/><NATION_NM value="미국"/><ISIN value="US19247G1076"/><KOR_SECN_NM value="II-VI INCORPORATED Com CHAN 009623241 US9021041085"/><SUM_FRSEC_BUY_AMT value="152978044"/><SUM_FRSEC_SELL_AMT value="96278316"/><SUM_FRSEC_TOT_AMT value="249256360"/><SUM_FRSEC_NET_BUY_AMT value="56699727"/></result>
+    </data>
+    <data vectorkey="33" type="Document">
+        <result><RNUM value="34"/><NATION_NM value="미국"/><ISIN value="US9229083632"/><KOR_SECN_NM value="VANGUARD SP 500 ETF SPLR 39326002188 US9229084135"/><SUM_FRSEC_BUY_AMT value="151599136"/><SUM_FRSEC_SELL_AMT value="39153291"/><SUM_FRSEC_TOT_AMT value="190752427"/><SUM_FRSEC_NET_BUY_AMT value="112445845"/></result>
+    </data>
+    <data vectorkey="34" type="Document">
+        <result><RNUM value="35"/><NATION_NM value="미국"/><ISIN value="US74347R2067"/><KOR_SECN_NM value="PROSHARES ULTRA QQQ ETF"/><SUM_FRSEC_BUY_AMT value="148454117"/><SUM_FRSEC_SELL_AMT value="65675509"/><SUM_FRSEC_TOT_AMT value="214129626"/><SUM_FRSEC_NET_BUY_AMT value="82778608"/></result>
+    </data>
+    <data vectorkey="35" type="Document">
+        <result><RNUM value="36"/><NATION_NM value="홍콩"/><ISIN value="HK0001205258"/><KOR_SECN_NM value="XL2CSOPHYNIX"/><SUM_FRSEC_BUY_AMT value="145556853"/><SUM_FRSEC_SELL_AMT value="188183386"/><SUM_FRSEC_TOT_AMT value="333740238"/><SUM_FRSEC_NET_BUY_AMT value="-42626533"/></result>
+    </data>
+    <data vectorkey="36" type="Document">
+        <result><RNUM value="37"/><NATION_NM value="미국"/><ISIN value="US7475251036"/><KOR_SECN_NM value="QUALCOMM INC"/><SUM_FRSEC_BUY_AMT value="145504391"/><SUM_FRSEC_SELL_AMT value="102973109"/><SUM_FRSEC_TOT_AMT value="248477500"/><SUM_FRSEC_NET_BUY_AMT value="42531282"/></result>
+    </data>
+    <data vectorkey="37" type="Document">
+        <result><RNUM value="38"/><NATION_NM value="미국"/><ISIN value="US25460G2865"/><KOR_SECN_NM value="DIREXION DAILY TSLA BULL 2X SHARES"/><SUM_FRSEC_BUY_AMT value="137592546"/><SUM_FRSEC_SELL_AMT value="527494222"/><SUM_FRSEC_TOT_AMT value="665086768"/><SUM_FRSEC_NET_BUY_AMT value="-389901677"/></result>
+    </data>
+    <data vectorkey="38" type="Document">
+        <result><RNUM value="39"/><NATION_NM value="미국"/><ISIN value="US46222L1089"/><KOR_SECN_NM value="IONQ INC"/><SUM_FRSEC_BUY_AMT value="135304455"/><SUM_FRSEC_SELL_AMT value="544476105"/><SUM_FRSEC_TOT_AMT value="679780560"/><SUM_FRSEC_NET_BUY_AMT value="-409171649"/></result>
+    </data>
+    <data vectorkey="39" type="Document">
+        <result><RNUM value="40"/><NATION_NM value="미국"/><ISIN value="US00217D1000"/><KOR_SECN_NM value="AST SPACEMOBILE INC CL A EXOF 008072919 US64822P2056"/><SUM_FRSEC_BUY_AMT value="131425022"/><SUM_FRSEC_SELL_AMT value="152777210"/><SUM_FRSEC_TOT_AMT value="284202232"/><SUM_FRSEC_NET_BUY_AMT value="-21352188"/></result>
+    </data>
+    <data vectorkey="40" type="Document">
+        <result><RNUM value="41"/><NATION_NM value="미국"/><ISIN value="US46125A1007"/><KOR_SECN_NM value="INFLECTION POINT ACQUISITIO INTUITIVE MACHINES INC MRGR 944502928 KYG478741211"/><SUM_FRSEC_BUY_AMT value="129213969"/><SUM_FRSEC_SELL_AMT value="117759860"/><SUM_FRSEC_TOT_AMT value="246973828"/><SUM_FRSEC_NET_BUY_AMT value="11454109"/></result>
+    </data>
+    <data vectorkey="41" type="Document">
+        <result><RNUM value="42"/><NATION_NM value="미국"/><ISIN value="US0231351067"/><KOR_SECN_NM value="AMAZON.COM INC"/><SUM_FRSEC_BUY_AMT value="122385418"/><SUM_FRSEC_SELL_AMT value="217378332"/><SUM_FRSEC_TOT_AMT value="339763750"/><SUM_FRSEC_NET_BUY_AMT value="-94992914"/></result>
+    </data>
+    <data vectorkey="42" type="Document">
+        <result><RNUM value="43"/><NATION_NM value="미국"/><ISIN value="US46152A6507"/><KOR_SECN_NM value="TRADR 2X LONG LITE DAILY ETF"/><SUM_FRSEC_BUY_AMT value="109411598"/><SUM_FRSEC_SELL_AMT value="41037377"/><SUM_FRSEC_TOT_AMT value="150448974"/><SUM_FRSEC_NET_BUY_AMT value="68374221"/></result>
+    </data>
+    <data vectorkey="43" type="Document">
+        <result><RNUM value="44"/><NATION_NM value="미국"/><ISIN value="US72703X1063"/><KOR_SECN_NM value="PLANET LABS PBC"/><SUM_FRSEC_BUY_AMT value="105961241"/><SUM_FRSEC_SELL_AMT value="80914609"/><SUM_FRSEC_TOT_AMT value="186875849"/><SUM_FRSEC_NET_BUY_AMT value="25046632"/></result>
+    </data>
+    <data vectorkey="44" type="Document">
+        <result><RNUM value="45"/><NATION_NM value="미국"/><ISIN value="US88636R2224"/><KOR_SECN_NM value="DEFIANCE DAILY TARGET 2X LONG RKLB ETF"/><SUM_FRSEC_BUY_AMT value="103163828"/><SUM_FRSEC_SELL_AMT value="138548275"/><SUM_FRSEC_TOT_AMT value="241712103"/><SUM_FRSEC_NET_BUY_AMT value="-35384448"/></result>
+    </data>
+    <data vectorkey="45" type="Document">
+        <result><RNUM value="46"/><NATION_NM value="미국"/><ISIN value="US6078281002"/><KOR_SECN_NM value="MODINE MANUFACTURING CO"/><SUM_FRSEC_BUY_AMT value="101723012"/><SUM_FRSEC_SELL_AMT value="2289946"/><SUM_FRSEC_TOT_AMT value="104012957"/><SUM_FRSEC_NET_BUY_AMT value="99433066"/></result>
+    </data>
+    <data vectorkey="46" type="Document">
+        <result><RNUM value="47"/><NATION_NM value="홍콩"/><ISIN value="HK0001121349"/><KOR_SECN_NM value="XL2CSOPSMSN"/><SUM_FRSEC_BUY_AMT value="97602594"/><SUM_FRSEC_SELL_AMT value="116939556"/><SUM_FRSEC_TOT_AMT value="214542150"/><SUM_FRSEC_NET_BUY_AMT value="-19336962"/></result>
+    </data>
+    <data vectorkey="47" type="Document">
+        <result><RNUM value="48"/><NATION_NM value="미국"/><ISIN value="US2193501051"/><KOR_SECN_NM value="CORNING INC"/><SUM_FRSEC_BUY_AMT value="97410549"/><SUM_FRSEC_SELL_AMT value="50601337"/><SUM_FRSEC_TOT_AMT value="148011885"/><SUM_FRSEC_NET_BUY_AMT value="46809212"/></result>
+    </data>
+    <data vectorkey="48" type="Document">
+        <result><RNUM value="49"/><NATION_NM value="미국"/><ISIN value="US15675D1037"/><KOR_SECN_NM value="CEREBRAS SYSTEMS INC"/><SUM_FRSEC_BUY_AMT value="94627080"/><SUM_FRSEC_SELL_AMT value="15681079"/><SUM_FRSEC_TOT_AMT value="110308159"/><SUM_FRSEC_NET_BUY_AMT value="78946001"/></result>
+    </data>
+    <data vectorkey="49" type="Document">
+        <result><RNUM value="50"/><NATION_NM value="미국"/><ISIN value="US92189F6768"/><KOR_SECN_NM value="VANECK SEMICONDUCTOR ETF CHAN 39610601171 US57060U2336"/><SUM_FRSEC_BUY_AMT value="92197251"/><SUM_FRSEC_SELL_AMT value="36034283"/><SUM_FRSEC_TOT_AMT value="128231535"/><SUM_FRSEC_NET_BUY_AMT value="56162968"/></result>
+    </data>
+</vector>
+

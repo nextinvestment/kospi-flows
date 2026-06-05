@@ -1,0 +1,266 @@
+[
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/websquare/control.jsp?w2xPath=/IPORTAL/user/index.xml",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/websquare/javascript.wq?q=/bootloader",
+    "post": null
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/control.jsp?w2xPath=/IPORTAL/user/index.xml",
+    "body_preview": "\n\n\n\n\n\n\n\n\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns='http://www.w3.org/1999/xhtml' xmlns:ev='http://www.w3.org/2001/xml-events' xmlns:w2='http://www.inswave.com/websquare' xmlns:xf='http://www.w3.org/2002/xforms' lang='ko'>\n\t<head>\n\t\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t\t<!--<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />-->\n\t\t<meta http-equiv=\"X-UA-Compatible\" con"
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/websquare/config.xml?postfix=17806308558533032.8782582270965",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/websquare/javascriptPluginAll.wq?w2xType=5&postfix=2.0_1.4828B.20150331.134456_1.6&compression=true",
+    "post": null
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/javascript.wq?q=/bootloader",
+    "body_preview": "var WebSquareDefaultEngineType='5';\n/*\n * WebSquare Platform v2.0\n * http://www.websquare.co.kr\n *\n * Version : 2.0_1.4828B.20150331.134456\n * Date: 20150331.134648\n */\n\nvar imports,requires;(function(_1){if(typeof WebSquare!=\"undefined\"&&!WebSquare.remove){throw new Error(\"WebSquare engine is already running!\");}window[\"WebSquare\"]={};window[\"WebSquareLang\"]={};var _2=\"undefined\";WebSquare.domain=null;WebSquare.baseURI=\"\";WebSquare.baseServletURI=\"\";WebSquare.baseThemeURI=\"\";WebSquare.w2xDocume"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/config.xml?postfix=17806308558533032.8782582270965",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<WebSquare>\n\t<docType value=\"standard\"/>\t<!-- quirk, standard-->\n\t<debug value=\"true\"/>\t\n\t<debugKey value=\"\"/>\n\t<language value=\"ko\"/>\n\n\t<!-- system : websquare(*) -->\n\t<exceptionHandler value=\"websquare\"/>\n\t<debugMenu value=\"block\"/>\n\t<welcome-file></welcome-file>\n\t<forcedValueSetting value=\"true\">\n\t\t<!-- xml model instance에 값을 넣으려할때, 대상 instance가 없을경우 해당 instance를 만들건지를 결정-->\n\t</forcedValueSetting>\n\t<processMsgHeight value=\"219\"/>\n\t<processMsgWidth value="
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/websquare/message/ko.js?postfix=17806308566732035.1583759142634",
+    "post": null
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/javascriptPluginAll.wq?w2xType=5&postfix=2.0_1.4828B.20150331.134456_1.6&compression=true",
+    "body_preview": "\n/*\n * WebSquare Platform v2.0\n * http://www.websquare.co.kr\n *\n * Version : 2.0_1.4828B.20150331.134456\n * Date: 20150331.134648\n */\n\nString.prototype.wq_trim=(function(){var _1=new RegExp(\"^\\\\s\\\\s*\");var _2=new RegExp(\"\\\\s\\\\s*$\");return function(){return this.replace(_1,\"\").replace(_2,\"\");};})();if(typeof String.prototype.trim==\"undefined\"){String.prototype.trim=String.prototype.wq_trim;}String.prototype.capitalize=function(){[\"String.capitalize\"];return this.charAt(0).toUpperCase()+this.subst"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/message/ko.js?postfix=17806308566732035.1583759142634",
+    "body_preview": "var WebSquareLang = {\r\n\r\n\tE_core_lee : \" 이정인  \"\t,\r\n\t\r\n\t//Actions.js\r\n\tE_Actions_fileuploadPopupName : \"파일업로드 : %1\",\r\n\t\r\n\t//date.js\r\n\tE_date_ShouldBeyyMMddFormat : \"입력값은 yyyyMMdd형식이어야 합니다. 입력값 : %1\",\r\n\tE_date_ShouldBeNumberFormat : \"입력값은 숫자형식이어야 합니다. 입력값 : %1\",\r\n\tE_date_YearRange : \"연도는 %1부터 %2사이 값이어야 합니다. 입력값 : %3\",\r\n\tE_date_MonthRange : \"월은 %1부터 %2사이 값이어야 합니다. 입력값 : %3\",\r\n\tE_date_DayRange : \"일은 %1부터 %2사이 값이어야 합니다. 입력값 : %3\",\r\n\r\n\t//exception.js\r\n\tE_exception_ErrorOccursSeeLog : \"작업 도중 오류가 발생하였습니"
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/user/index.xml?postfix=17806308570205572.156762388737",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/websquare/skin/stylesheet.css?postfix=17806308572852393.986339440598",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/header_index.xml?postfix=17806308576332209.8213111579958",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/user/common/wframe/common.xml?postfix=17806308579405089.391687119338",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/files/menuContents.xml?postfix=17806308581266057.637732665529",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/files/baseDate.xml?postfix=17806308583348318.77378769499",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/main_banner.xml?postfix=17806308585028955.844252506342",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/quick_index.xml?postfix=17806308586854448.541281218088",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/footer.xml?postfix=17806308588588209.402274588077",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/files/mainContents.xml?postfix=17806308590345170.427728695288",
+    "post": null
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/user/index.xml?postfix=17806308570205572.156762388737",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet href=\"/IPORTAL/common/css/layout_24.css\" type=\"text/css\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:ev=\"http://www.w3.org/2001/xml-events\" xmlns:w2=\"http://www.inswave.com/websquare\"\n\txmlns:xf=\"http://www.w3.org/2002/xforms\">\n\t<head>\n\t\t<title>증권정보포털 세이브로 </title>\n\t\t<w2:buildDate />\n\t\t<xf:model>\n\t\t\t<xf:instance>\n\t\t\t\t<data xmlns=\"\" />\n\t\t\t</xf:instance>\n\n\t\t\t<!-- main bookmark set -->\n\t\t\t<xf:submission id=\"submission_getBookmarkList\" re"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/skin/stylesheet.css?postfix=17806308572852393.986339440598",
+    "body_preview": "html{height:100%;overflow:auto}body{height:100%;margin:0;padding:0;font:12px \"ë‹ì›€\",Dotum,Helvetica,AppleGothic,Sans-serif;position:relative}.w2noselect{user-select:none;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none}.w2modalopenedbody{overflow:hidden}*html .w2modal{position:absolute}.w2modal{position:fixed;left:0;top:0;width:100%;height:100%;background-color:#ccc;filter:alpha(opacity=30);opacity:.3;z-index:6000}*html .w2modal_gridDownload{position:absolute}.w2modal_gridDo"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/header_index.xml?postfix=17806308576332209.8213111579958",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:ev=\"http://www.w3.org/2001/xml-events\" xmlns:w2=\"http://www.inswave.com/websquare\"\n\txmlns:xf=\"http://www.w3.org/2002/xforms\">\n\t<head>\n\t\t<w2:buildDate />\n\t\t<xf:model>\n\t\t\t<xf:instance>\n\t\t\t\t<data xmlns=\"\" />\n\t\t\t</xf:instance>\n\t\t</xf:model>\n\t\t<script src=\"/IPORTAL/common/js/common.js\" type=\"text/javascript\"></script>\n\t\t<script type=\"javascript\"><![CDATA[\n\t\t\tvar top_MEM_LOGIN_ID = \"\";\n\t\t\tvar isAllViewFirstopen = f"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/user/common/wframe/common.xml?postfix=17806308579405089.391687119338",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:ev=\"http://www.w3.org/2001/xml-events\" xmlns:w2=\"http://www.inswave.com/websquare\"\n\txmlns:xf=\"http://www.w3.org/2002/xforms\">\n\t<head>\n\t<title>공통</title>\n\t\t<w2:buildDate />\n\t\t<xf:model>\n\t\t\t<xf:instance>\n\t\t\t\t<data xmlns=\"\" />\n\t\t\t</xf:instance>\n \n\t\t\t<!-- 공통코드셋 -->\n\t\t\t<xf:submission id=\"submission_codeList\" ref=\"request/reqParam\" target=\"codeListResponse\"\n\t\t\t\taction=\"/websquare/engine/proworks/callServletService."
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/files/menuContents.xml?postfix=17806308581266057.637732665529",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>     \r\n<html xmlns=\"http://www.w3.org/1999/xhtml\"    xmlns:ev=\"http://www.w3.org/2001/xml-events\"    xmlns:w2=\"http://www.inswave.com/websquare\" xmlns:xf=\"http://www.w3.org/2002/xforms\">  \r\n   <head>  \r\n       <w2:buildDate/> \r\n       <xf:model>  \r\n           <xf:instance>   \r\n               <data xmlns=\"\">   \r\n               <menuAllFile>   \r\n<vector beforeEJBCall=\"1761030086627\" afterEJBCall=\"1761030086879\" result=\"329\">\n    <data vectorkey=\"0\" type=\"Docum"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/files/baseDate.xml?postfix=17806308583348318.77378769499",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>     \r\n<html xmlns=\"http://www.w3.org/1999/xhtml\"    xmlns:ev=\"http://www.w3.org/2001/xml-events\"    xmlns:w2=\"http://www.inswave.com/websquare\" xmlns:xf=\"http://www.w3.org/2002/xforms\">  \r\n   <head>  \r\n       <w2:buildDate/> \r\n       <xf:model>  \r\n           <xf:instance>   \r\n               <data xmlns=\"\">   \r\n               <baseDate>   \r\n<result result=\"1\" next=\"false\" beforeEJBCall=\"1780614669504\" afterEJBCall=\"1780614669525\">\n    <bDate1 value=\"20260604"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/main_banner.xml?postfix=17806308585028955.844252506342",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:ev=\"http://www.w3.org/2001/xml-events\" xmlns:w2=\"http://www.inswave.com/websquare\"\n\txmlns:xf=\"http://www.w3.org/2002/xforms\">\n\t<head>\n\t\t<w2:buildDate />\n\t\t<xf:model>\n\t\t\t<xf:instance>\n\t\t\t\t<data xmlns=\"\" />\n\t\t\t</xf:instance>\n\t\t</xf:model>\n\t\t<script type=\"javascript\"><![CDATA[ \n\t\t]]></script>\n\t</head>\n\t<body>\n\t\t<xf:group id=\"\" class=\"carousel\" style=\"\">\n\t\t\t<xf:group id=\"\" class=\"slides\" style=\"\">\n\t\t\t\t<xf:group c"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/quick_index.xml?postfix=17806308586854448.541281218088",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:ev=\"http://www.w3.org/2001/xml-events\" xmlns:w2=\"http://www.inswave.com/websquare\"\n\txmlns:xf=\"http://www.w3.org/2002/xforms\">\n\t<head>\n\t\t<w2:buildDate />\n\t\t<xf:model>\n\t\t\t<xf:instance>\n\t\t\t\t<data xmlns=\"\" />\n\t\t\t</xf:instance>\n\t\t</xf:model>\n\t\t<script type=\"javascript\"><![CDATA[\n\t\t]]></script>\n\t</head>\n\t<body>\n\t\t<xf:group class=\"quick_box\" id=\"\" style=\"\">\n\t\t\t<xf:group class=\"\" id=\"\" style=\"\" tagname=\"ul\">\n\t\t\t\t<xf:"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/common/wfr/footer.xml?postfix=17806308588588209.402274588077",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:ev=\"http://www.w3.org/2001/xml-events\" xmlns:w2=\"http://www.inswave.com/websquare\"\n\txmlns:xf=\"http://www.w3.org/2002/xforms\">\n\t<head>\n\t\t<w2:buildDate />\n\t\t<xf:model>\n\t\t\t<xf:instance>\n\t\t\t\t<data xmlns=\"\" />\n\t\t\t</xf:instance>\n\t\t</xf:model>\n\t\t<script type=\"javascript\"><![CDATA[ ]]></script>\n\t</head>\n\t<body>\n\t\t<xf:group id=\"\" class=\"footer_24\" style=\"\">\n\t\t\t<xf:group class=\"footer_center\" id=\"\" style=\"\">\n\t\t\t\t<xf:gr"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/files/mainContents.xml?postfix=17806308590345170.427728695288",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>     \r\n<html xmlns=\"http://www.w3.org/1999/xhtml\"    xmlns:ev=\"http://www.w3.org/2001/xml-events\"    xmlns:w2=\"http://www.inswave.com/websquare\" xmlns:xf=\"http://www.w3.org/2002/xforms\">  \r\n   <head>  \r\n       <w2:buildDate/> \r\n       <xf:model>  \r\n           <xf:instance>   \r\n               <data xmlns=\"\">   \r\n               <mainContents>   \r\n                   <grid_0_2>   \r\n<RES/>\n                   </grid_0_2>   \r\n<grid_1_1>\r\n</grid_1_1>\r\n<grid_1_2>\r\n<R"
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/common/processMsg.html?param=%c1%b6%c8%b8%c1%df%c0%d4%b4%cf%b4%d9.&postfix=17806308602569605.26022990416",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "POST",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "post": "<reqParam action=\"getUserID\" task=\"ksd.safe.bip.cmuc.User.process.InstEventPTask\"/>"
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/IPORTAL/common/processMsg.html?param=%c1%b6%c8%b8%c1%df%c0%d4%b4%cf%b4%d9.&postfix=17806308604712056.6306315992942",
+    "post": null
+  },
+  {
+    "phase": "request",
+    "method": "POST",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "post": "<reqParam action=\"getKofrIndex\" task=\"ksd.safe.bip.mgmt.taskmgr.process.CommonPTask\"><STD_DT value=\"20260604\"/><T_STD_DT value=\"20260605\"/></reqParam>"
+  },
+  {
+    "phase": "request",
+    "method": "POST",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "post": "<reqParam action=\"getNotiClause\" task=\"ksd.safe.bip.mgmt.taskmgr.process.CommonPTask\"><STD_DT value=\"20260604\"/><T_STD_DT value=\"20260605\"/></reqParam>"
+  },
+  {
+    "phase": "request",
+    "method": "POST",
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "post": "<reqParam action=\"getKospiKosdaqIndex\" task=\"ksd.safe.bip.mgmt.taskmgr.process.CommonPTask\"><STD_DT value=\"20260604\"/><T_STD_DT value=\"20260605\"/></reqParam>"
+  },
+  {
+    "phase": "request",
+    "method": "GET",
+    "url": "https://seibro.or.kr/websquare/javascript.wq?w2xType=5&q=uiplugin/popup&postfix=2.0_1.4828B.20150331.134456_1.6&compression=true",
+    "post": null
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/common/processMsg.html?param=%c1%b6%c8%b8%c1%df%c0%d4%b4%cf%b4%d9.&postfix=17806308602569605.26022990416",
+    "body_preview": "<binary>"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<RES beforeServletCall=\"1780630902775\" beforeEJBCall=\"1780630902780\" afterServletCall=\"1780630902780\" afterEJBCall=\"1780630902780\">\n    <userID value=\"null\"/>\n</RES>\n"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/javascript.wq?w2xType=5&q=uiplugin/popup&postfix=2.0_1.4828B.20150331.134456_1.6&compression=true",
+    "body_preview": "_._a.af=function(id,_2,_3){[\"WebSquare.uiplugin.popup\"];_._s.call(this,id,_2,_3);};_.extend(_._a.af.prototype,_._s.prototype);_._a.af.prototype.defaultOptions={pluginType:\"uiplugin.popup\",pluginName:\"popup\",useConfig:true,popupName:\"\"};_._a.af.prototype.initialize=function(_4){[\"WebSquare.uiplugin.popup.initialize\"];try{this.popupList=[];this.popupParams={};}catch(e){_.exception.printStackTrace(e,null,this);}};_._a.af.prototype.toHTML=function(){[\"WebSquare.uiplugin.popup.toHTML\"];try{return \"\";"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/IPORTAL/common/processMsg.html?param=%c1%b6%c8%b8%c1%df%c0%d4%b4%cf%b4%d9.&postfix=17806308604712056.6306315992942",
+    "body_preview": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html lang=\"ko\" xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"ko\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n\t<title>loading</title>\n\t<script type=\"text/javascript\">\n\t\tparent.document.getElementsByName(\"__processbarIFrame\")[0].title = \"loading\";\n    </script>\n\n\t<!--\n\t<script type=\"text/javascript\">\n\t\tfunction init(){\n\t\t\ttry {\n\t\t\t\tvar prsMs"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<vector beforeServletCall=\"1780630903420\" beforeEJBCall=\"1780630903421\" afterServletCall=\"1780630903428\" afterEJBCall=\"1780630903428\" result=\"1\">\n    <data vectorkey=\"0\" type=\"Document\">\n        <result><SETL_DT value=\"20260604\"/><RFR_INDEX value=\"2.519\"/><RFR_TYPE value=\"PUBN\"/><CAL_RFR_DIFF value=\"-.01\"/><PUBN_RFR_DIFF value=\"-.01\"/></result>\n    </data>\n</vector>\n\n"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<vector beforeServletCall=\"1780630903444\" beforeEJBCall=\"1780630903445\" afterServletCall=\"1780630903450\" afterEJBCall=\"1780630903449\" result=\"4\">\n    <data vectorkey=\"0\" type=\"Document\">\n        <result><NOTIBOD_NO value=\"32\"/><NOTIENT_SEQ value=\"566\"/><TITLE_NM value=\"메일 서비스 개편에 따른 SEIBro 로그인 기능 일시중단 안내\"/><NOTIENT_CONTENT value=\"&lt;span style=&quot;font-family:돋움;&quot;&gt;한국예탁결제원 메일 서비스 개편에 따라 &lt;strong&gt;2026년 1월 16일 (금) 18시 30분&lt;/strong&gt;부터 &l"
+  },
+  {
+    "phase": "response",
+    "status": 200,
+    "url": "https://seibro.or.kr/websquare/engine/proworks/callServletService.jsp",
+    "body_preview": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\n\n<vector beforeServletCall=\"1780630903475\" beforeEJBCall=\"1780630903475\" afterServletCall=\"1780630903505\" afterEJBCall=\"1780630903504\" result=\"1\">\n    <data vectorkey=\"0\" type=\"Document\">\n        <result><STD_DT value=\"20260605\"/><KOSPI_NM value=\"코스피\"/><KOSPI_PRICE value=\"8260.37\"/><KOSPI_PRICE_RATE value=\"-379.04\"/><KOSPI_RATE value=\"-4.39\"/><KOSDAQ_NM value=\"KOSDAQ\"/><KOSDAQ_PRICE value=\"1012.4\"/><KOSDAQ_PRICE_RATE value=\"-37.33\"/><KOSDAQ_RATE value=\"-3"
+  }
+]
