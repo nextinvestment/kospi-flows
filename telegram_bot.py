@@ -1,4 +1,20 @@
-"""Long-poll Telegram bot — listens for trigger keywords and runs ingest+notify.
+"""DEPRECATED. Functionality merged into ../stock-screener/market_bot.exe.
+
+The new bot still responds to the same triggers (업데이트, 갱신, update, refresh,
+지금) AND adds slash commands (/pulse /futures /options /etf /seohak /all).
+
+Do not run this file. start_bot.bat / stop_bot.bat now manage market_bot.exe.
+"""
+import sys
+sys.stderr.write(
+    "kospi-flows/telegram_bot.py is deprecated.\n"
+    "Use ../stock-screener/market_bot.exe instead.\n"
+)
+sys.exit(1)
+
+
+_LEGACY_DOCSTRING = """  # noqa: keep original behaviour archived below
+Long-poll Telegram bot — listens for trigger keywords and runs ingest+notify.
 
 Triggers (case-insensitive substring match in incoming chat text):
   업데이트, 갱신, update, /update, refresh, /refresh, now
@@ -7,8 +23,6 @@ Behaviour:
   1. ack with "🔄 업데이트 시작합니다…" so the user knows it's working
   2. run `python run_daily.py` (fresh fetch from Naver, ~90s)
   3. run `python push_and_notify.py` (git push + summary messages)
-
-Run with: `python telegram_bot.py` (or via start_bot.bat for background).
 """
 from __future__ import annotations
 

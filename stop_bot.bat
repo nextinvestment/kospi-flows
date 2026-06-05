@@ -1,6 +1,6 @@
 @echo off
-echo Stopping kospi-flows telegram bot...
-taskkill /F /FI "WINDOWTITLE eq telegram_bot.py*" 2>nul
-REM pythonw doesn't show window title easily — kill by command-line match
+echo Stopping market_bot.exe...
+taskkill /F /IM market_bot.exe 2>nul
+REM legacy: kill any stale pythonw telegram_bot.py still running
 wmic process where "name='pythonw.exe' and CommandLine like '%%telegram_bot.py%%'" delete 2>nul
 echo Done.
