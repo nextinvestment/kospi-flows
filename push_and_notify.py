@@ -64,24 +64,61 @@ def git_commit_and_push(token: str | None, user: str, repo: str) -> bool:
     return True
 
 
-def build_summary() -> str:
-    """Read latest parquet, produce a Telegram-formatted summary."""
+def _name_map() -> dict[str, str]:
+    uni_path = HERE / "data" / "kospi_universe.csv"
+    if uni_path.exists():
+        uni = pd.read_csv(uni_path, dtype={"code": str})
+        return dict(zip(uni["code"], uni["name"]))
+    from config import WATCHLIST
+    return WATCHLIST
+
+
+def _fmt_row(i: int, name: str, val: float, ret: float) -> str:
+    return f"  {i:>2}. {name} {val:+,.0f}  ({ret:+.1f}%)"
+
+
+def _fmt_cum(i: int, name: str, cum: float, inst: float, days: int) -> str:
+    return f"  {i:>2}. {name} {cum:+,.0f}억  (기관 {inst:+,.0f}, {days}d)"
+
+
+def build_summary() -> list[str]:
+    """Return one-or-more Telegram messages (each ≤ 4096 chars).
+
+    Message 1: market summary + daily TOP15 buy/sell
+    Message 2: N-day cumulative + co-trades + streaks + dashboard link
+    """
+    import analytics
     mp = HERE / "data" / "market_flows.parquet"
     sp = HERE / "data" / "stock_flows.parquet"
+    ip = HERE / "data" / "kospi_index.parquet"
     if not mp.exists():
-        return "<b>KOSPI Flows</b>\n(no market data yet)"
+        return ["<b>KOSPI Flows</b>\n(no market data yet)"]
 
     m = pd.read_parquet(mp)
     m = m[m["market"] == "KOSPI"].sort_values("date")
     latest = m.iloc[-1]
     d = pd.Timestamp(latest["date"]).strftime("%Y-%m-%d")
 
-    # 5d / 20d cumulative
     cum5 = m.tail(5)[["외국인", "기관계", "개인"]].sum()
     cum20 = m.tail(20)[["외국인", "기관계", "개인"]].sum()
 
+    # ----- MESSAGE 1: market summary + daily TOP15 -----
     lines = [
         f"<b>📊 KOSPI 수급 — {d}</b>",
+    ]
+
+    # KOSPI index price + divergence
+    if ip.exists():
+        idx = pd.read_parquet(ip)
+        kospi_idx = idx[idx["index_code"] == "KOSPI"].sort_values("date")
+        if not kospi_idx.empty:
+            iv = kospi_idx.iloc[-1]
+            lines += [f"KOSPI {iv['close']:,.2f} ({iv['ret_pct']:+.2f}%)"]
+            div = analytics.divergence_check(m, kospi_idx, window=20)
+            if div.get("available"):
+                lines += ["", div["msg"]]
+
+    lines += [
         "",
         f"<b>당일 (억원)</b>",
         f"  외국인: {latest['외국인']:+,.0f}",
@@ -92,38 +129,94 @@ def build_summary() -> str:
         f"<b>20일 누적</b> 외국인 {cum20['외국인']:+,.0f}  /  기관 {cum20['기관계']:+,.0f}  /  개인 {cum20['개인']:+,.0f}",
     ]
 
+    msg1_extra: list[str] = []
+    msg2_lines: list[str] = []
+
     if sp.exists():
         s = pd.read_parquet(sp)
+        s["date"] = pd.to_datetime(s["date"])
+        nm = _name_map()
         d_latest = s["date"].max()
         day = s[s["date"] == d_latest].copy()
         if not day.empty:
-            day["foreign_value"] = day["foreign_net"] * day["close"] / 1e8  # 억원
-            # Prefer universe.csv (full top-200) over WATCHLIST so TOP15 means something
-            uni_path = HERE / "data" / "kospi_universe.csv"
-            if uni_path.exists():
-                uni = pd.read_csv(uni_path, dtype={"code": str})
-                name_map = dict(zip(uni["code"], uni["name"]))
-            else:
-                from config import WATCHLIST
-                name_map = WATCHLIST
-            day["name"] = day["code"].map(name_map).fillna(day["code"])
+            day["foreign_value"] = day["foreign_net"] * day["close"] / 1e8
+            day["name"] = day["code"].map(nm).fillna(day["code"])
+
             top = day.nlargest(15, "foreign_value")[["name", "foreign_value", "ret_pct"]]
             bot = day.nsmallest(15, "foreign_value")[["name", "foreign_value", "ret_pct"]]
-            lines += [
+            msg1_extra += [
                 "",
-                f"<b>외국인 순매수 TOP 15 (억원)</b>",
-                *[f"  {i:>2}. {n} {v:+,.0f}  ({r:+.1f}%)"
+                f"<b>당일 외국인 순매수 TOP 15 (억원)</b>",
+                *[_fmt_row(i, n, v, r)
                   for i, (n, v, r) in enumerate(zip(top["name"], top["foreign_value"], top["ret_pct"]), 1)],
                 "",
-                f"<b>외국인 순매도 TOP 15 (억원)</b>",
-                *[f"  {i:>2}. {n} {v:+,.0f}  ({r:+.1f}%)"
+                f"<b>당일 외국인 순매도 TOP 15 (억원)</b>",
+                *[_fmt_row(i, n, v, r)
                   for i, (n, v, r) in enumerate(zip(bot["name"], bot["foreign_value"], bot["ret_pct"]), 1)],
             ]
 
+        # ----- MESSAGE 2: cumulative + co-trades + streaks -----
+        msg2_lines.append(f"<b>📊 KOSPI 수급 — {d} (계속)</b>")
+
+        for n_days, label in [(5, "5일"), (20, "20일")]:
+            cb, cs = analytics.n_day_cumulative_top(s, n_days=n_days, top_k=10, name_map=nm)
+            if not cb.empty:
+                msg2_lines += [
+                    "",
+                    f"<b>{label} 누적 외국인 매수 TOP 10</b>",
+                    *[_fmt_cum(i, r.name, r.cum_foreign, r.cum_inst, r.days_traded)
+                      for i, r in enumerate(cb.itertuples(index=False), 1)],
+                ]
+            if not cs.empty:
+                msg2_lines += [
+                    "",
+                    f"<b>{label} 누적 외국인 매도 TOP 10</b>",
+                    *[_fmt_cum(i, r.name, r.cum_foreign, r.cum_inst, r.days_traded)
+                      for i, r in enumerate(cs.itertuples(index=False), 1)],
+                ]
+
+        co_buy, co_sell = analytics.co_buying_selling(s, top_k=10, name_map=nm)
+        if not co_buy.empty:
+            msg2_lines += [
+                "",
+                f"<b>🟢 외국인+기관 동반 매수 TOP 10 (억원)</b>",
+                *[f"  {i:>2}. {r.name} 외국인 {r.foreign_value:+,.0f}  기관 {r.inst_value:+,.0f}"
+                  for i, r in enumerate(co_buy.itertuples(index=False), 1)],
+            ]
+        if not co_sell.empty:
+            msg2_lines += [
+                "",
+                f"<b>🔴 외국인+기관 동반 매도 TOP 10 (억원)</b>",
+                *[f"  {i:>2}. {r.name} 외국인 {r.foreign_value:+,.0f}  기관 {r.inst_value:+,.0f}"
+                  for i, r in enumerate(co_sell.itertuples(index=False), 1)],
+            ]
+
+        sb = analytics.consecutive_streak(s, min_days=5, direction="buy", name_map=nm).head(10)
+        ss = analytics.consecutive_streak(s, min_days=5, direction="sell", name_map=nm).head(10)
+        if not sb.empty:
+            msg2_lines += [
+                "",
+                f"<b>📈 5일+ 연속 외국인 매수 (TOP 10)</b>",
+                *[f"  {i:>2}. {r.name} {int(r.streak_days)}일 연속 (누적 {r.cum_foreign_value:+,.0f}억)"
+                  for i, r in enumerate(sb.itertuples(index=False), 1)],
+            ]
+        if not ss.empty:
+            msg2_lines += [
+                "",
+                f"<b>📉 5일+ 연속 외국인 매도 (TOP 10)</b>",
+                *[f"  {i:>2}. {r.name} {int(r.streak_days)}일 연속 (누적 {r.cum_foreign_value:+,.0f}억)"
+                  for i, r in enumerate(ss.itertuples(index=False), 1)],
+            ]
+
     url = os.environ.get("STREAMLIT_URL", "").strip()
-    if url:
-        lines += ["", f'<a href="{url}">→ 대시보드 열기</a>']
-    return "\n".join(lines)
+    tail = ["", f'<a href="{url}">→ 대시보드 열기</a>'] if url else []
+
+    msg1 = "\n".join(lines + msg1_extra)
+    msg2 = "\n".join(msg2_lines + tail) if msg2_lines else None
+    out = [msg1]
+    if msg2:
+        out.append(msg2)
+    return out
 
 
 def send_telegram(token: str, chat_id: str, text: str) -> dict:
@@ -158,17 +251,18 @@ def main():
         print(f"  ! git push failed: {e}")
         # continue to telegram anyway
 
-    text = build_summary()
-    if not pushed and "(no changes to commit)" not in text:
-        text += "\n\n<i>(데이터 변경 없음 — 사이트 갱신 없음)</i>"
+    messages = build_summary()
+    if not pushed:
+        messages[-1] += "\n\n<i>(데이터 변경 없음 — 사이트 갱신 없음)</i>"
 
-    print("  posting to Telegram ...")
-    resp = send_telegram(tg_token, chat_id, text)
-    ok = resp.get("ok", False)
-    print(f"    telegram ok={ok}  message_id={resp.get('result', {}).get('message_id')}")
-    if not ok:
-        print(f"    response: {resp}")
-        sys.exit(2)
+    for i, text in enumerate(messages, 1):
+        print(f"  posting to Telegram ({i}/{len(messages)}, {len(text)} chars) ...")
+        resp = send_telegram(tg_token, chat_id, text)
+        ok = resp.get("ok", False)
+        print(f"    ok={ok}  message_id={resp.get('result', {}).get('message_id')}")
+        if not ok:
+            print(f"    response: {resp}")
+            sys.exit(2)
 
 
 if __name__ == "__main__":

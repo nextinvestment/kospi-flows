@@ -63,18 +63,31 @@ def ingest_stocks(pages: int = 2) -> int:
     return len(df)
 
 
-def main(market_pages: int = 2, stock_pages: int = 2):
+def ingest_index(code: str = "KOSPI", pages: int = 2) -> int:
+    print(f"[index {code}] fetching {pages} pages...")
+    df = fetcher.fetch_index(code, pages=pages)
+    if df.empty:
+        print(f"[index {code}] no data")
+        return 0
+    merged = store.upsert_index(df)
+    print(f"[index {code}] +{len(df)} rows (table now: {len(merged)}, latest={df['date'].max().date()})")
+    return len(df)
+
+
+def main(market_pages: int = 2, stock_pages: int = 2, index_pages: int = 2):
     start = time.time()
     print(f"=== kospi-flows daily ingest @ {datetime.now():%Y-%m-%d %H:%M:%S} ===")
     ingest_market("KOSPI", pages=market_pages)
+    ingest_index("KOSPI", pages=index_pages)
     ingest_stocks(pages=stock_pages)
     print(f"=== done in {time.time() - start:.1f}s ===")
 
 
-def backfill(market_pages: int = 60, stock_pages: int = 15):
+def backfill(market_pages: int = 60, stock_pages: int = 15, index_pages: int = 60):
     """One-off historical backfill. 60 pages ≈ 600 trading days ≈ 2.5 years."""
-    print(f"=== BACKFILL: market={market_pages}pp, stocks={stock_pages}pp ===")
+    print(f"=== BACKFILL: market={market_pages}pp, stocks={stock_pages}pp, index={index_pages}pp ===")
     ingest_market("KOSPI", pages=market_pages)
+    ingest_index("KOSPI", pages=index_pages)
     ingest_stocks(pages=stock_pages)
 
 

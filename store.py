@@ -10,6 +10,7 @@ DATA_DIR.mkdir(exist_ok=True)
 
 MARKET_PATH = DATA_DIR / "market_flows.parquet"   # KOSPI / KOSDAQ daily investor flow
 STOCK_PATH = DATA_DIR / "stock_flows.parquet"     # per-stock daily flow
+INDEX_PATH = DATA_DIR / "kospi_index.parquet"     # KOSPI / KOSDAQ index OHLC
 
 
 def _upsert(path: Path, new: pd.DataFrame, keys: list[str]) -> pd.DataFrame:
@@ -61,6 +62,20 @@ def load_stocks(code: str | None = None) -> pd.DataFrame:
     if code is not None:
         df = df[df["code"] == code]
     return df.sort_values(["code", "date"]).reset_index(drop=True)
+
+
+def upsert_index(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return load(INDEX_PATH)
+    return _upsert(INDEX_PATH, df, ["date", "index_code"])
+
+
+def load_index(code: str = "KOSPI") -> pd.DataFrame:
+    df = load(INDEX_PATH)
+    if df.empty:
+        return df
+    df = df[df["index_code"] == code]
+    return df.sort_values("date").reset_index(drop=True)
 
 
 def latest_date(path: Path) -> pd.Timestamp | None:

@@ -6,8 +6,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+import analytics
 import store
 from config import WATCHLIST, KOSPI200_PROXY_CODE, KOSPI200_PROXY_NAME
+from pathlib import Path
 
 st.set_page_config(page_title="KOSPI 수급 분석", layout="wide")
 st.title("KOSPI 수급 분석")
@@ -31,15 +33,35 @@ def _stocks() -> pd.DataFrame:
     return df
 
 
+@st.cache_data(ttl=600)
+def _index(code: str = "KOSPI") -> pd.DataFrame:
+    df = store.load_index(code)
+    if not df.empty:
+        df["date"] = pd.to_datetime(df["date"])
+    return df
+
+
+@st.cache_data(ttl=600)
+def _name_map() -> dict[str, str]:
+    uni_path = Path(__file__).parent / "data" / "kospi_universe.csv"
+    if uni_path.exists():
+        uni = pd.read_csv(uni_path, dtype={"code": str})
+        return dict(zip(uni["code"], uni["name"]))
+    return WATCHLIST
+
+
 market = _market("KOSPI")
 stocks = _stocks()
+kospi_idx = _index("KOSPI")
+NAME_MAP = _name_map()
 
 if market.empty:
     st.error("데이터가 없습니다. `python run_daily.py backfill` 먼저 실행하세요.")
     st.stop()
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(
-    ["오늘의 수급", "일별·누적 (KOSPI)", "종목별 추적", "종목 랭킹", "KOSPI200 proxy"]
+tab1, tab2, tab_div, tab_cum, tab_co, tab3, tab4, tab5 = st.tabs(
+    ["오늘의 수급", "일별·누적 (KOSPI)", "Divergence", "N일 누적·연속", "동반 매수/매도",
+     "종목별 추적", "종목 랭킹", "KOSPI200 proxy"]
 )
 
 
@@ -148,14 +170,14 @@ with tab3:
 
 # --------------------------------------------------------------------- TAB 4
 with tab4:
-    st.subheader("일별 종목 랭킹 (워치리스트 내)")
+    st.subheader("일별 종목 랭킹 (KOSPI 시총상위 universe)")
     if stocks.empty:
         st.info("종목 데이터가 없습니다.")
     else:
         dates = sorted(stocks["date"].unique(), reverse=True)
         d_sel = st.selectbox("날짜", dates, format_func=lambda x: pd.Timestamp(x).strftime("%Y-%m-%d"))
         day = stocks[stocks["date"] == d_sel].copy()
-        day["종목명"] = day["code"].map(WATCHLIST)
+        day["종목명"] = day["code"].map(NAME_MAP).fillna(day["code"])
         day = day[["종목명", "code", "close", "ret_pct", "foreign_value", "inst_value", "foreign_pct"]]
         day = day.rename(columns={
             "code": "코드", "close": "종가", "ret_pct": "등락률(%)",
@@ -173,16 +195,130 @@ with tab4:
             st.dataframe(day.sort_values("외국인순매수(억)", ascending=True).head(10),
                          hide_index=True, use_container_width=True)
 
-        # Cumulative ranking over a window
-        st.markdown("#### N일 누적 외국인 순매수 (워치리스트)")
+        st.markdown("#### N일 누적 외국인 순매수 (universe 전체)")
         window = st.slider("기간 (거래일)", 5, 60, 20, key="cum_window")
         recent_dates = sorted(stocks["date"].unique(), reverse=True)[:window]
         w = stocks[stocks["date"].isin(recent_dates)].copy()
-        w["종목명"] = w["code"].map(WATCHLIST)
+        w["종목명"] = w["code"].map(NAME_MAP).fillna(w["code"])
         cum = w.groupby(["code", "종목명"])[["foreign_value", "inst_value"]].sum().reset_index()
         cum = cum.rename(columns={"foreign_value": "외국인누적(억)", "inst_value": "기관누적(억)"})
         cum = cum.sort_values("외국인누적(억)", ascending=False)
         st.dataframe(cum, hide_index=True, use_container_width=True)
+
+
+# --------------------------------------------------------------- TAB: Divergence
+with tab_div:
+    st.subheader("KOSPI 지수 vs 외국인 누적 (Divergence)")
+    if kospi_idx.empty:
+        st.info("KOSPI 지수 데이터가 없습니다. `python run_daily.py` 실행 필요.")
+    else:
+        win = st.slider("기간 (거래일)", 5, min(250, len(market)), 60, key="div_win")
+        idx = kospi_idx.tail(win).copy()
+        mk = market.tail(win).copy()
+        mk["외국인_누적"] = mk["외국인"].cumsum()
+
+        fig = go.Figure()
+        fig.add_scatter(x=idx["date"], y=idx["close"], name="KOSPI 지수",
+                        yaxis="y1", line=dict(color="black", width=2))
+        fig.add_scatter(x=mk["date"], y=mk["외국인_누적"], name="외국인 누적 (억원)",
+                        yaxis="y2", line=dict(color="crimson", width=2))
+        fig.update_layout(
+            height=480, title=f"최근 {win} 거래일",
+            yaxis=dict(title="KOSPI"),
+            yaxis2=dict(title="외국인 누적 (억원)", overlaying="y", side="right"),
+            hovermode="x unified",
+        )
+        st.plotly_chart(fig, use_container_width=True)
+
+        div = analytics.divergence_check(market, kospi_idx, window=win)
+        if div.get("available"):
+            verdict = div["verdict"]
+            if verdict == "bear_divergence":
+                st.error(div["msg"].replace("<b>", "**").replace("</b>", "**"))
+            elif verdict == "bull_divergence":
+                st.success(div["msg"].replace("<b>", "**").replace("</b>", "**"))
+            else:
+                st.info(div["msg"].replace("<b>", "**").replace("</b>", "**"))
+
+
+# --------------------------------------------------------------- TAB: N일 누적·연속
+with tab_cum:
+    st.subheader("N일 누적 + 연속 매매")
+    if stocks.empty:
+        st.info("종목 데이터가 없습니다.")
+    else:
+        n_days = st.selectbox("누적 기간 (거래일)", [3, 5, 10, 20, 60], index=1, key="cum_n")
+        top_k = st.slider("표시 개수", 5, 30, 15, key="cum_topk")
+        cb, cs = analytics.n_day_cumulative_top(stocks, n_days=n_days, top_k=top_k, name_map=NAME_MAP)
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown(f"#### {n_days}일 누적 외국인 매수 TOP {top_k}")
+            df = cb.rename(columns={
+                "name": "종목", "code": "코드",
+                "cum_foreign": "외국인누적(억)", "cum_inst": "기관누적(억)",
+                "days_traded": "거래일",
+            })
+            st.dataframe(df, hide_index=True, use_container_width=True)
+        with c2:
+            st.markdown(f"#### {n_days}일 누적 외국인 매도 TOP {top_k}")
+            df = cs.rename(columns={
+                "name": "종목", "code": "코드",
+                "cum_foreign": "외국인누적(억)", "cum_inst": "기관누적(억)",
+                "days_traded": "거래일",
+            })
+            st.dataframe(df, hide_index=True, use_container_width=True)
+
+        st.divider()
+        min_streak = st.slider("최소 연속일", 3, 20, 5, key="streak_min")
+        sb = analytics.consecutive_streak(stocks, min_days=min_streak, direction="buy", name_map=NAME_MAP)
+        ss = analytics.consecutive_streak(stocks, min_days=min_streak, direction="sell", name_map=NAME_MAP)
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown(f"#### 📈 {min_streak}일+ 연속 외국인 매수")
+            if sb.empty:
+                st.caption("해당 종목 없음")
+            else:
+                df = sb.rename(columns={
+                    "name": "종목", "code": "코드",
+                    "streak_days": "연속일", "cum_foreign_value": "기간누적(억)",
+                })
+                st.dataframe(df, hide_index=True, use_container_width=True)
+        with c2:
+            st.markdown(f"#### 📉 {min_streak}일+ 연속 외국인 매도")
+            if ss.empty:
+                st.caption("해당 종목 없음")
+            else:
+                df = ss.rename(columns={
+                    "name": "종목", "code": "코드",
+                    "streak_days": "연속일", "cum_foreign_value": "기간누적(억)",
+                })
+                st.dataframe(df, hide_index=True, use_container_width=True)
+
+
+# --------------------------------------------------------------- TAB: 동반 매수/매도
+with tab_co:
+    st.subheader("외국인 + 기관 동반 매수/매도 (당일)")
+    st.caption("두 주체가 같은 방향 = 강한 신호. 다른 방향 = 의견 갈림.")
+    if stocks.empty:
+        st.info("종목 데이터가 없습니다.")
+    else:
+        k = st.slider("표시 개수", 5, 30, 15, key="co_k")
+        co_buy, co_sell = analytics.co_buying_selling(stocks, top_k=k, name_map=NAME_MAP)
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown("#### 🟢 동반 매수 TOP")
+            df = co_buy.rename(columns={
+                "name": "종목", "code": "코드", "close": "종가", "ret_pct": "등락(%)",
+                "foreign_value": "외국인(억)", "inst_value": "기관(억)", "combined": "합계(억)",
+            })
+            st.dataframe(df, hide_index=True, use_container_width=True)
+        with c2:
+            st.markdown("#### 🔴 동반 매도 TOP")
+            df = co_sell.rename(columns={
+                "name": "종목", "code": "코드", "close": "종가", "ret_pct": "등락(%)",
+                "foreign_value": "외국인(억)", "inst_value": "기관(억)", "combined": "합계(억)",
+            })
+            st.dataframe(df, hide_index=True, use_container_width=True)
 
 
 # --------------------------------------------------------------------- TAB 5

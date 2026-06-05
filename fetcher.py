@@ -179,6 +179,48 @@ def fetch_stock(code: str, pages: int = 5) -> pd.DataFrame:
     return out
 
 
+def fetch_index_page(code: str = "KOSPI", page: int = 1) -> pd.DataFrame:
+    """One page (~10 trading days) of index OHLC. code: KOSPI, KOSDAQ, KPI200."""
+    url = f"{BASE}/sise/sise_index_day.naver?code={code}&page={page}"
+    html = _get(url)
+    soup = BeautifulSoup(html, "html.parser")
+    rows = []
+    for tr in soup.find_all("tr"):
+        tds = tr.find_all("td")
+        if len(tds) < 6:
+            continue
+        date = _parse_date_4digit(tds[0].get_text(strip=True))
+        if date is None:
+            continue
+        close = _parse_num(tds[1].get_text(strip=True))
+        change = _parse_num(tds[2].get_text(strip=True))
+        ret_txt = tds[3].get_text(strip=True).rstrip("%")
+        ret_pct = _parse_num(ret_txt)
+        if "−" in tds[3].get_text() or "-" in tds[3].get_text():
+            ret_pct = -abs(ret_pct) if ret_pct == ret_pct else ret_pct  # NaN-safe
+        volume = _parse_num(tds[4].get_text(strip=True))
+        value = _parse_num(tds[5].get_text(strip=True))  # 백만 (million KRW)
+        rows.append([date, close, change, ret_pct, volume, value])
+    if not rows:
+        return pd.DataFrame()
+    return pd.DataFrame(rows, columns=["date", "close", "change", "ret_pct", "volume_kshares", "value_mn"])
+
+
+def fetch_index(code: str = "KOSPI", pages: int = 10) -> pd.DataFrame:
+    frames = []
+    for p in range(1, pages + 1):
+        df = fetch_index_page(code, p)
+        if df.empty:
+            break
+        df["index_code"] = code
+        frames.append(df)
+        time.sleep(0.15)
+    if not frames:
+        return pd.DataFrame()
+    out = pd.concat(frames, ignore_index=True)
+    return out.drop_duplicates(subset=["date", "index_code"]).sort_values("date").reset_index(drop=True)
+
+
 def fetch_kospi_universe(top_n: int = 200) -> list[tuple[str, str]]:
     """KOSPI market-cap top N codes from Naver. Returns [(code, name), ...].
 
