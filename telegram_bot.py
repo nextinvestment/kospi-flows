@@ -53,7 +53,10 @@ def load_env():
 
 load_env()
 TOKEN = os.environ["TG_BOT_TOKEN"]
-CHAT_ID = int(os.environ["TG_CHAT_ID"])
+# TG_CHAT_ID가 콤마구분 다중값이어도 크래시하지 않게 — 명령/응답은 메인(관리자) 방 기준.
+# (실제 알림 브로드캐스트는 push_and_notify.py가 구독자 전체로 보냄)
+_chat_raw = (os.environ.get("TG_ADMIN_CHAT_ID") or os.environ.get("TG_CHAT_ID") or "0")
+CHAT_ID = int(_chat_raw.split(",")[0].strip() or 0)
 API = f"https://api.telegram.org/bot{TOKEN}"
 
 TRIGGERS = ["업데이트", "갱신", "update", "/update", "refresh", "/refresh", " now", "지금"]

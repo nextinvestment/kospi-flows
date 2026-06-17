@@ -220,14 +220,30 @@ def build_summary() -> list[str]:
 
 
 def send_telegram(token: str, chat_id: str, text: str) -> dict:
-    r = requests.post(
-        TG_API.format(token=token),
-        json={"chat_id": chat_id, "text": text, "parse_mode": "HTML",
-              "disable_web_page_preview": False},
-        timeout=30,
-    )
-    r.raise_for_status()
-    return r.json()
+    try:
+        import sys as _sys
+        from pathlib import Path as _Path
+        _d = _Path(__file__).resolve().parent.parent / "stock-screener"
+        if _d.exists() and str(_d) not in _sys.path:
+            _sys.path.insert(0, str(_d))
+        from tg_subscribers import broadcast_targets
+        targets = broadcast_targets(chat_id)
+    except Exception:
+        targets = [c.strip() for c in str(chat_id).split(",") if c.strip()]
+    res = {}
+    for cid in targets:
+        try:
+            r = requests.post(
+                TG_API.format(token=token),
+                json={"chat_id": cid, "text": text, "parse_mode": "HTML",
+                      "disable_web_page_preview": False},
+                timeout=30,
+            )
+            r.raise_for_status()
+            res = r.json()
+        except Exception as e:
+            print(f"  ! telegram send to {cid} failed: {e}")
+    return res
 
 
 def main():
