@@ -147,12 +147,16 @@ def build_summary() -> list[str]:
             msg1_extra += [
                 "",
                 f"<b>당일 외국인 순매수 TOP 15 (억원)</b>",
+                "<blockquote expandable>",
                 *[_fmt_row(i, n, v, r)
                   for i, (n, v, r) in enumerate(zip(top["name"], top["foreign_value"], top["ret_pct"]), 1)],
+                "</blockquote>",
                 "",
                 f"<b>당일 외국인 순매도 TOP 15 (억원)</b>",
+                "<blockquote expandable>",
                 *[_fmt_row(i, n, v, r)
                   for i, (n, v, r) in enumerate(zip(bot["name"], bot["foreign_value"], bot["ret_pct"]), 1)],
+                "</blockquote>",
             ]
 
         # ----- MESSAGE 2: cumulative + co-trades + streaks -----
@@ -164,15 +168,19 @@ def build_summary() -> list[str]:
                 msg2_lines += [
                     "",
                     f"<b>{label} 누적 외국인 매수 TOP 10</b>",
+                    "<blockquote expandable>",
                     *[_fmt_cum(i, r.name, r.cum_foreign, r.cum_inst, r.days_traded)
                       for i, r in enumerate(cb.itertuples(index=False), 1)],
+                    "</blockquote>",
                 ]
             if not cs.empty:
                 msg2_lines += [
                     "",
                     f"<b>{label} 누적 외국인 매도 TOP 10</b>",
+                    "<blockquote expandable>",
                     *[_fmt_cum(i, r.name, r.cum_foreign, r.cum_inst, r.days_traded)
                       for i, r in enumerate(cs.itertuples(index=False), 1)],
+                    "</blockquote>",
                 ]
 
         co_buy, co_sell = analytics.co_buying_selling(s, top_k=10, name_map=nm)
@@ -180,15 +188,19 @@ def build_summary() -> list[str]:
             msg2_lines += [
                 "",
                 f"<b>🟢 외국인+기관 동반 매수 TOP 10 (억원)</b>",
+                "<blockquote expandable>",
                 *[f"  {i:>2}. {r.name} 외국인 {r.foreign_value:+,.0f}  기관 {r.inst_value:+,.0f}"
                   for i, r in enumerate(co_buy.itertuples(index=False), 1)],
+                "</blockquote>",
             ]
         if not co_sell.empty:
             msg2_lines += [
                 "",
                 f"<b>🔴 외국인+기관 동반 매도 TOP 10 (억원)</b>",
+                "<blockquote expandable>",
                 *[f"  {i:>2}. {r.name} 외국인 {r.foreign_value:+,.0f}  기관 {r.inst_value:+,.0f}"
                   for i, r in enumerate(co_sell.itertuples(index=False), 1)],
+                "</blockquote>",
             ]
 
         sb = analytics.consecutive_streak(s, min_days=5, direction="buy", name_map=nm).head(10)
@@ -197,15 +209,19 @@ def build_summary() -> list[str]:
             msg2_lines += [
                 "",
                 f"<b>📈 5일+ 연속 외국인 매수 (TOP 10)</b>",
+                "<blockquote expandable>",
                 *[f"  {i:>2}. {r.name} {int(r.streak_days)}일 연속 (누적 {r.cum_foreign_value:+,.0f}억)"
                   for i, r in enumerate(sb.itertuples(index=False), 1)],
+                "</blockquote>",
             ]
         if not ss.empty:
             msg2_lines += [
                 "",
                 f"<b>📉 5일+ 연속 외국인 매도 (TOP 10)</b>",
+                "<blockquote expandable>",
                 *[f"  {i:>2}. {r.name} {int(r.streak_days)}일 연속 (누적 {r.cum_foreign_value:+,.0f}억)"
                   for i, r in enumerate(ss.itertuples(index=False), 1)],
+                "</blockquote>",
             ]
 
     url = os.environ.get("STREAMLIT_URL", "").strip()
