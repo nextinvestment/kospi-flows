@@ -4,6 +4,7 @@
 + 동월/선행 상관계수.
 """
 import sys
+from datetime import date
 from pathlib import Path
 import pandas as pd, requests
 sys.stdout.reconfigure(encoding="utf-8")
@@ -29,7 +30,7 @@ DATA = {
 
 def me(tkr):
     r = requests.get(f"https://eodhd.com/api/eod/{tkr}",
-        params={"api_token": EODHD_API_KEY, "fmt": "json", "from": "2020-12-01", "to": "2026-06-17"}, timeout=30)
+        params={"api_token": EODHD_API_KEY, "fmt": "json", "from": "2020-12-01", "to": date.today().strftime("%Y-%m-%d")}, timeout=30)
     d = pd.DataFrame(r.json()); d["date"] = pd.to_datetime(d["date"])
     c = "adjusted_close" if "adjusted_close" in d else "close"
     s = d.set_index("date")[c].sort_index().resample("ME").last()
