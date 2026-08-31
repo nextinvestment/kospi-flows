@@ -48,6 +48,17 @@ MANUAL = {
     "US46152A6689": "SNXX",          # Tradr 2x Long SNDK
     "US46152A4296": "AAOX",          # Tradr 2x Long AAOI
     "HK0001205258": "7709(SKhy2x)",  # CSOP SK Hynix Daily 2x (홍콩 7709)
+    # 2026 신규 (EODHD 미수록)
+    "US78392B2060": "SKhy·ADR",      # SK하이닉스 스폰서드 ADR (1주=0.1주)
+    "US25461H2913": "SOXS",          # Direxion Daily Semi Bear 3x (분할 후 ISIN)
+    "US26923V4150": "DRAM·2xL",      # Roundhill T-REX 2x Long DRAM
+    "US26923W2153": "SNDK·2xL",      # T-REX 2x Long SNDK
+    "US25461A4452": "PLTR·2xL",      # Direxion Daily PLTR Bull 2x
+    "US88636W6509": "IREN·2xL",      # Defiance 2x Long IREN
+    "US88636R2307": "IONQ·2xL",      # Defiance 2x Long IONQ
+    "US88636R2224": "RKLB·2xL",      # Defiance 2x Long RKLB
+    "US38747R5202": "MRVL·2xL",      # GraniteShares 2x Long MRVL
+    "US74347Y7224": "ZSL",           # ProShares UltraShort Silver
 }
 
 _US_EXCH = {"US", "NASDAQ", "NYSE", "BATS", "NYSE ARCA", "AMEX"}
